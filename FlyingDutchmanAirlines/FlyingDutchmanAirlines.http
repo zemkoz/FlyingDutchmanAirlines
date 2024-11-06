@@ -1,6 +1,6 @@
-@FlyingDutchmanAirlines_HostAddress = http://localhost:5288
+@HostAddress = https://localhost:40443
 
-GET {{FlyingDutchmanAirlines_HostAddress}}/weatherforecast/
+GET {{HostAddress}}/api/flights
 Accept: application/json
 
 ###

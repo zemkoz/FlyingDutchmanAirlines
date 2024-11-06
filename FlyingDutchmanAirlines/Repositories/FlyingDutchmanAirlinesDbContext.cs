@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlyingDutchmanAirlines.Repositories;
 
-public sealed class FlyingDutchmanAirlinesDbContext : DbContext
+public class FlyingDutchmanAirlinesDbContext : DbContext
 {
     public FlyingDutchmanAirlinesDbContext()
     {
@@ -14,17 +14,19 @@ public sealed class FlyingDutchmanAirlinesDbContext : DbContext
     {
     }
 
-    public DbSet<Airport> Airports { get; set; }
+    public virtual DbSet<Airport> Airports { get; set; }
 
-    public DbSet<Booking> Bookings { get; set; }
+    public virtual DbSet<Booking> Bookings { get; set; }
 
-    public DbSet<Customer> Customers { get; set; }
+    public virtual DbSet<Customer> Customers { get; set; }
 
-    public DbSet<Flight> Flights { get; set; }
+    public virtual DbSet<Flight> Flights { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("FLYING_DUTCHMAN_AIRLINES_CONNECTION_STRING"));
+        optionsBuilder.UseSqlServer(
+            Environment.GetEnvironmentVariable("FLYING_DUTCHMAN_AIRLINES_CONNECTION_STRING")
+            );
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
